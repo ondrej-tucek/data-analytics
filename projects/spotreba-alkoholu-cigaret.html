@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Vizualizace - </title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/bootstrap.css" rel="stylesheet">
+		
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+  
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="../../../css/style_portfolios.css" rel="stylesheet">
+		<link href="../../../css/normalize.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../../fonts/font-awesome/css/font-awesome.css">
+		<!--<link href="css/templatemo-style.css" rel="stylesheet">-->
+		
+		<link rel="stylesheet" type="text/css" href="css/c3.css">
+		<script src="js/d3.v3.min.js" charset="utf-8"></script>
+		<script src="js/c3.js"></script>
+		<script src="js/jquery-1.12.2.min.js" charset="utf-8"></script>
+	</head>
+	
+	<body data-spy="scroll" data-target="#affix-nav">  <!--data-offset="20"-->
+	
+	
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Vizualizace:</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Spotřeba alkoholických nápojů a cigaret na 1 obyvatele (1989-2014)</a></li>
+      </ul>
+    </nav>
+  </div>
+</nav>
+
+
+<div class="container">
+      <div class="row">
+      <!--left-->
+      <nav  id="affix-nav" class="col-xs-6 col-sm-3"> <!--id="leftCol"-->
+        <ul class="nav nav-pills nav-stacked" data-spy="affix">
+          <li class="active"><a href="#sec0">Graf spotřeby <br/> alkoholických nápojů</a></li>
+          <li><a href="#sec1">Graf spotřeby cigaret</a></li>
+          <li><a href="#sec2">Tabulka spotřeby <br/> alkoholických nápojů <br/> a cigaret</a></li>
+          <li><a href="#sec3">Použité zdroje</a></li>
+          <li><a href="../../../index.html#works-section"><i class="fa fa-times"></i>  Close Project</a></li>
+<!--           <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button> -->
+        </ul>
+      </nav>
+
+      
+      <!--right-->
+      <div class="col-xs-6 col-sm-9">
+      <div id="sec0" class="empty-sp"></div>
+      <div>
+	  <h2>Spotřeba alkoholických nápojů v litrech na 1 obyvatele <br/> v České republice</h2>
+	  <div id="alcohols"></div>
+	  <p><br/>
+	      Pohybem kurzoru myši nad grafem zobrazíte informace o spotřebě k danému roku. Kliknutím na jednotlivé položky v legendě pod grafem zobrazíte nebo zamezíte viditelnost dané položky.
+	  </p>
+	  <hr class="line">
+      </div>
+        
+        
+        
+      <div id="sec1" class="empty-sp"></div>
+      <div>
+	  <h2>Spotřeba cigaret v kusech na 1 obyvatele v České republice</h2>
+	  <div id="cigarets"></div>
+	  <p><br/>
+	      Pohybem kurzoru myši nad grafem zobrazíte informace o spotřebě k danému roku.
+	  </p>
+	  <hr class="line">
+      </div>
+        
+
+        
+      <div id="sec2" class="empty-sp"></div>
+      <div>
+	  <h2>Tabulka spotřeby alkoholických nápojů <br/> a cigaret</h2><br/>
+	  <div align="center">
+	      <table style="width: 50%"> <!--100%-->
+		  <thead>
+			<tr>
+			    <th>Rok</th>			
+			    <th>Lihoviny (40%)</th>
+			    <th>Víno</th>
+			    <th>Pivo</th>
+			    <th>Alkoholické nápoje celkem</th>
+			    <th style="width:75px;">Cigarety</th>
+			</tr>
+		  </thead>
+		  <tbody id="tbody">
+		  </tbody>
+	      </table>
+	  </div>
+	  <hr class="line">
+      </div>
+        
+      <div id="sec3" class="empty-sp"></div>
+      <div>
+	  <h2>Použité zdroje</h2>
+	  <p><strong>Data</strong>: <a href="https://www.czso.cz/documents/10180/36785880/32018115_0303.xlsx/f2bafb8c-131d-4b72-a75c-cc409014f752?version=1.1">www.czso.cz</a></p>
+	  <p><strong>Graf</strong>: <a href="http://c3js.org">C3.js</a></p>
+      </div>
+	      
+      <hr>
+      <div class="cntr">2016, <a href="http://www.data-analytics.cz">Data Analytics</a></div>
+      <hr>
+
+      </div><!--/right-->
+      </div><!--/row-->
+</div><!--/container-->
+
+
+<script>
+var chart = c3.generate({
+    bindto: '#alcohols',
+    data: {
+	x: 'date',
+	xFormat: '%Y',
+	columns: [
+	  ['date', '1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016'],            
+	  ['Lihoviny (40%)', 6.3,7.2,8.2,8.0,7.8,7.9,7.9,8.0,8.3,8.2,8.3,8.3,8.2,8.3,8.4,7.6,7.8,8.0,8.2,8.1,8.2,7.0,6.9,6.7,6.5,6.7],
+	  ['Víno', 13.5,14.8,14.8,15.0,15.3,15.4,15.4,15.8,15.9,16.0,16.1,16.1,16.2,16.2,16.3,16.5,16.8,17.2,18.5,18.5,18.7,19.4,19.4,19.8,18.8,19.5],
+	  ['Pivo', 151.0,155.2,146.9,163.3,153.6,156.7,156.9,157.3,161.4,161.1,159.8,159.9,156.9,159.9,161.7,160.5,163.5,159.1,159.1,156.6,150.7,144.4,142.5,148.6,147.0,147.0],
+	  ['Alkoholické nápoje celkem', 170.8,177.2,169.9,186.3,176.7,180.0,180.2,181.1,185.6,185.3,184.2,184.3,181.3,184.4,186.4,184.6,188.1,184.3,185.8,183.2,177.6,170.9,168.8,175.2,172.3,173.3]
+	]          
+    },
+    axis: {
+	x: {
+	    type: 'timeseries',
+	    tick: {
+		format: "%Y" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+	    }
+	}
+    },
+    tooltip: {
+	format: {
+	    value: function (value) { return value + ' litrů'; }
+	}
+    }
+});
+
+var chart = c3.generate({
+    bindto: '#cigarets',
+    data: {
+	x: 'date',
+	xFormat: '%Y',
+	columns: [
+	  ['date', '1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016'],
+	  ['data1', 1776,2152,2025,1950,1912,2040,2185,2165,2354,1852,2090,1882,1664,1893,2192,2243,2275,2338,2345,2107,2071,2028,1988,1947,1904,1950],
+	],
+	names: {
+	    data1: 'Cigarety'
+	},
+	colors: {
+	    data1: '#bcbd22'
+	}
+    },
+    axis: {
+      x: {
+	type: 'timeseries',
+	tick: {
+	    format: "%Y" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+	}
+      }
+    },
+    tooltip: {
+	format: {
+	    value: function (value) { return value + ' ks'; }
+	}
+    }
+});
+</script> 
+
+<script> 
+$.getJSON('data.json', function (data) {
+    for (var i = 0; i < data.data1.length; i++) {
+        tr = $('<tr/>');
+	tr.append("<td data-tooltip=\"Rok\" align=\"center\">" + data.data1[i] + "</td>");
+	tr.append("<td data-tooltip=\"Lihoviny (40%)\" align=\"center\">" + data.data3[i] + "</td>");
+	tr.append("<td data-tooltip=\"Víno\" align=\"center\">" + data.data4[i] + "</td>");
+	tr.append("<td data-tooltip=\"Pivo\" align=\"center\">" + data.data5[i] + "</td>");
+	tr.append("<td data-tooltip=\"Alkoholické nápoje celkem\" align=\"center\">" + data.data2[i] + "</td>");	
+	tr.append("<td data-tooltip=\"Cigarety\" align=\"center\">" + Number(data.data6[i]).toLocaleString() + "</td>");
+        $('#tbody').append(tr);
+    }
+});
+</script>
+
+
+
+	<!-- script references -->
+		<script src="../../../js/jquery.min.js"></script>
+		<script src="../../../js/bootstrap.min.js"></script>
+		<script src="../../../js/bootstrap.js"></script>
+<!-- 		<script src="js/scripts.js"></script> -->
+	</body>
+</html>

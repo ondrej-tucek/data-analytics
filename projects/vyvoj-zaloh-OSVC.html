@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Vizualizace</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/bootstrap.css" rel="stylesheet">
+		
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+  
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="../../../css/style_portfolios.css" rel="stylesheet">
+		<link href="../../../css/normalize.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../../fonts/font-awesome/css/font-awesome.css">
+		<!--<link href="css/templatemo-style.css" rel="stylesheet">-->
+		
+		<script src="js/Chart.min.js"></script>
+		<script src="js/jquery-1.12.2.min.js" charset="utf-8"></script>
+	</head>
+	
+	<body data-spy="scroll" data-target="#affix-nav">  <!--data-offset="20"-->
+	
+	
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Vizualizace:</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Vývoj minimální výše záloh zdravotního pojištění pro OSVČ v rozmezí let 1993 - 2016</a></li>
+      </ul>
+    </nav>
+  </div>
+</nav>
+
+
+<div class="container">
+      <div class="row">
+      <!--left-->
+      <nav  id="affix-nav" class="col-xs-6 col-sm-3"> <!--id="leftCol"-->
+        <ul class="nav nav-pills nav-stacked" data-spy="affix">
+          <li class="active"><a href="#sec0">Graf minimální měsíční <br/> vyměřovací základ</a></li>
+          <li><a href="#sec1">Graf minimální výše <br/> záloh</a></li>
+          <li><a href="#sec2">Tabulka minimální <br/> výše záloh</a></li>
+          <li><a href="#sec3">Použité zdroje</a></li>
+          <li><a href="../../../index.html#works-section"><i class="fa fa-times"></i>  Close Project</a></li>
+<!--           <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button> -->
+        </ul>
+      </nav>
+
+      
+      <!--right-->
+      <div class="col-xs-6 col-sm-9">
+      <div id="sec0" class="empty-sp"></div>
+      <div>
+	  <h2>Minimální měsíční vyměřovací základ OSVČ</h2>
+	  <div align="center" >
+		<canvas id="graf1" height="450" width="600"></canvas>
+	  </div>
+	  <p><br/>
+	      Pohybem kurzoru myši nad jednotlivým sloupečkem zobrazíte informaci o finanční velikosti, kterou musel OSVČ odvést státu v daném roce. V letech 1999 a 2000 došlo k navýšení částky v průběhu roku. Proto jsou na horizontální ose tyto hodnoty uvedeny dvakrát.
+	  </p>
+	  <hr class="line">
+      </div>
+      
+      
+        
+      <div id="sec1" class="empty-sp"></div>
+      <div>
+	  <h2>Minimální výše záloh OSVČ</h2>
+	  <div align="center" >
+		<canvas id="graf2" height="450" width="600"></canvas>
+	  </div>
+	  <p><br/>
+	      Pohybem kurzoru myši nad jednotlivým sloupečkem zobrazíte informaci o finanční velikosti, kterou musel OSVČ odvést státu v daném roce. V letech 1999 a 2000 došlo k navýšení částky v průběhu roku. Proto jsou na horizontální ose tyto hodnoty uvedeny dvakrát.
+	  </p>
+	  <hr class="line">
+      </div>
+        
+
+        
+      <div id="sec2" class="empty-sp"></div>
+      <div>
+	  <h2>Tabulka minimální výše záloh</h2><br/>
+	  <div align="center">
+	      <table > <!--style="width: 55%"-->
+		  <thead>
+			<tr>
+			    <th>Období</th>
+    <!-- 			<th>Rok</th> -->
+			    <th>Minimální měsíční <br/> vyměřovací základ</th>
+			    <th style="width:150px;">Minimální záloha <br/>na pojistné</th>
+			</tr>
+		  </thead>
+		  <tbody id="tbody">
+		  </tbody>
+	      </table>
+	  </div>
+	  <hr class="line">
+      </div>
+
+      
+        
+      <div id="sec3" class="empty-sp"></div>
+      <div>
+	  <h2>Použité zdroje</h2>
+	  <p><strong>Data</strong>: <a href="https://www.vzp.cz/platci/informace/povinnosti-platcu-metodika/osvc/osvc-minimalni-vyse-zaloh">www.vzp.cz</a></p>
+	  <p><strong>Grafy</strong>: <a href="http://www.chartjs.org">Chart.js</a></p>
+      </div>
+	      
+      <hr>
+      <div class="cntr">2016, <a href="http://www.data-analytics.cz">Data Analytics</a></div>
+      <hr>
+
+      </div><!--/right-->
+      </div><!--/row-->
+</div><!--/container-->
+
+
+<script>
+var barChartData1 = {
+	labels:  ["1993","1994","1995","1996","1997","1998","1999","1999","2000","2000","2001","2002","2003","2004","2005","2006","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"],
+	datasets: [
+	    {
+		fillColor : "rgba(151,187,205,0.5)",
+		strokeColor : "rgba(151,187,205,0.8)",
+		highlightFill : "rgba(151,187,205,1)",
+		highlightStroke : "rgba(151,187,205,1)",
+		data : [2200,2200,2200,2500,2500,2650,3250,3600,4000,4500,5000,5700,6200,7929,8460,9017.5,9417,10069.5,10780,11777.5,11854.5,12370,12568.5,12942,12971,13305.5,13503]
+	    }
+	]
+
+};
+
+var barChartData2 = {
+	labels:  ["1993","1994","1995","1996","1997","1998","1999","1999","2000","2000","2001","2002","2003","2004","2005","2006","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016"],
+	datasets: [
+	    {
+		fillColor : "rgba(151,187,205,0.5)",
+		strokeColor : "rgba(151,187,205,0.8)",
+		highlightFill : "rgba(151,187,205,1)",
+		highlightStroke : "rgba(151,187,205,1)",
+		data : [297,297,297,338,338,358,439,486,540,608,675,770,837,1071,1143,1218,1272,1360,1456,1590,1601,1670,1697,1748,1752,1797,1823]
+	    }
+	]
+};
+
+window.onload = function(){
+    var ctx = document.getElementById("graf1").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData1, {
+	    responsive: false,
+	    scaleOverride: true,
+	    scaleSteps: 12,
+	    scaleStepWidth: 1250,
+	    scaleStartValue: 0,
+	    scaleLabel: "<%= Number(value).toLocaleString() %> Kč" ,
+	    tooltipTemplate: "<%= Number(value).toLocaleString() %> Kč" 
+    });
+	
+    var ctx = document.getElementById("graf2").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData2, {
+	    responsive: false,
+	    scaleOverride: true,
+	    scaleSteps: 13,
+	    scaleStepWidth: 150,
+	    scaleStartValue: 0,
+	    scaleLabel: "<%= Number(value).toLocaleString() %> Kč" ,
+	    tooltipTemplate: "<%= Number(value).toLocaleString() %> Kč" 
+    });	
+}
+</script>
+
+<script> 
+$.getJSON('data.json', function (data) {
+    for (var i = 0; i < data.data1.length; i++) {
+        tr = $('<tr/>');
+	tr.append("<td data-tooltip=\"Období\" align=\"center\">" + data.data1[i] + "</td>");
+	tr.append("<td data-tooltip=\"Minimální měsíční vyměřovací základ\" align=\"center\">" + Number(data.data3[i]).toLocaleString() + " Kč</td>");
+	tr.append("<td data-tooltip=\"Minimální záloha na pojistné\" align=\"center\">" + Number(data.data4[i]).toLocaleString() + " Kč</td>");
+        $('#tbody').append(tr);
+    }
+});
+</script>
+
+
+	<!-- script references -->
+		<script src="../../../js/jquery.min.js"></script>
+		<script src="../../../js/bootstrap.min.js"></script>
+		<script src="../../../js/bootstrap.js"></script>
+<!-- 		<script src="js/scripts.js"></script> -->
+	</body>
+</html>

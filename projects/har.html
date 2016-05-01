@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Machine Learning - Project 1</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/bootstrap.css" rel="stylesheet">
+		
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+  
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="../../../css/style_portfolios.css" rel="stylesheet">
+		<link href="../../../css/normalize.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../../fonts/font-awesome/css/font-awesome.css">
+		<!--<link href="css/templatemo-style.css" rel="stylesheet">-->
+	</head>
+	
+	<body data-spy="scroll" data-target="#affix-nav">  <!--data-offset="20"-->
+	
+	
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Machine Learning:</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Rozpoznávání lidské aktivity</a></li>
+      </ul>
+    </nav>
+  </div>
+</nav>
+
+
+<!--main-->
+<!--<div class="container">
+    <div class="empty-sp">.col-xs-6</div>
+</div>-->
+
+<div class="container">
+	<div class="row">
+      <!--left-->
+      <nav  id="affix-nav" class="col-xs-6 col-sm-3"> <!--id="leftCol"-->
+        <ul class="nav nav-pills nav-stacked" data-spy="affix">
+          <li class="active"><a href="#sec0">Úvod</a></li>
+          <li><a href="#sec1">Analýza</a></li>
+          <li><a href="#sec2">Výsledky</a></li>
+          <li><a href="#sec3">Použité zdroje</a></li>
+          <li><a href="../../../index.html#works-section"><i class="fa fa-times"></i>  Close Project</a></li>
+<!--           <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button> -->
+        </ul>
+      </nav>
+
+      
+      <!--right-->
+      <div class="col-xs-6 col-sm-9">
+      <div id="sec0" class="empty-sp"></div>
+      <div>
+	  <h2>Úvod</h2>
+	  <p class="txt-align">
+	    Máme-li dostatek dat ať už z různých měření nebo z databází, můžeme na základě jejich analýzy predikovat nebo vizualizovat slednovaný jev nebo vlastnost, která nás zajímá. Přesnost posouzení pak závisí na velikosti a kvalitě těchto dat. Rozhodujícími faktory jsou zde také čas a peníze. Jsou-li data například ve stovkách gigabajtů, musíme se zajímat i o to, kolik těchto analýz chceme udělat a jak rychle. Stačí nám jich pár nebo budeme nově aktualizovaná data analyzovat opakovaně? Vyplatí se nám jedna výpočetní stanice nebo vícero? </p>
+	  <p class="txt-align">
+	    Následující ukázkový příklad slouží k demonstraci jak lze analyzovat například cvičební sestavu ve fitnessu ve spojení s chytrými technologiemi jenž jsou v dnešní době levně dostupné.
+	  </p>
+	  
+	  <hr>
+ 
+	  <div class="row">
+	      <div class="col-md-8">
+	      <p class="txt-align">
+		  Mějme dáno šest sportovců ve fitnessu. Všichni sportovci mají na sobě tři sensory tak jak je naznačeno na obrázku vpravo (umístění senzoru je znázorněno červeným obdélníčkem). Čtvrtý sensor je uchycen k čince. Díky těmto senzorům jsme schopni zjistit orientaci, natočení a rychlost pohybu v prostoru neboli víme jaký cvik každý sportovec udělal. Tyto real-time měřená data pak pomocí Bluetooth nebo wi-fi zaznamenáváme na počítač.
+	      </p>
+	      <p class="txt-align">
+		  Sportovci byli požádáni aby provedli s činkou pět různých cvičebních sestav. Těchto pět sestav pro jednoduchost označme velkými písmeny A až E. Nyní si musíme uvědomit co chceme analyzovat. Chceme řešit úlohu kdy sportovci cvičí všech pět sestav 
+		  správně a u dalšího cviku určit do jaké sestavy cvik patří? Nebo chceme řešit úlohu kdy například sestava A odpovídá dobře provedeným cvikům, zatímco zbylé nikoliv a úkolem je rozponat zda je další cvik správně proveden? 		  
+<!-- 		  Například sestava A  reprezentuje přesně a správně provedený cvik, B třeba zvedání činky jen "na půli cesty" apod.  -->
+	      </p>	      
+	      <p class="txt-align">
+		  Označme tyto naměřená data jako dataset <i>training data</i>. Dataset tedy obsahuje informace o tom, do jaké sestavy cvik patří s tím, že tento cvik je jednoznačně určen naměřenými hodnotami ze senzorů. Druhá sada naměřených dat, dataset <i>testing data</i>, pak obsahuje pouze označení cviku (zde jej značíme id = číslo) a k němu odpovídající hodnoty ze senzorů. U těchto cviků pak chceme určit do jaké sestavy cvik patří podle toho jaký problém řešíme, viz odstavec výše.
+	      </p>
+	      </div> <!--end of col-md-8-->
+	      <div class="col-md-4"><img src="img/location-sensors.png" class="img-responsive"></div>
+	    </div>      
+        </div>
+        <hr class="line">
+        
+        
+        
+        <div id="sec1" class="empty-sp"></div>
+        <div>
+	    <h2>Analýza</h2>
+	    <p class="txt-align">
+		Z obou <a href="#sec3">datasetů</a> vybereme jenom ty sloupce, které obsahují relevantní data. Sloupce obsahující prázdná pole nebo nedefinované znaky do analýzy nezahrneme. Z původních dat o "objemu" 19 622 řádků a 160 sloupců jsme tak data redukovali na 52 sloupců za stávajících řádků.	      
+	    </p>
+	    <p class="txt-align">
+		K analýze jsme zvolili metodu <b>RandomForestClassifier</b>, neboť se ukázalo, že na těchto datech je velice rychlá. Navíc nám může poskytnout vodítko jaké sloupce jsou více signifikantní než jiné, viz odstavec <a href="#sec2">Výsledky</a>. Díky rychlosti výpočtu (cca několik vteřin) můžeme zavhrnout například metodu PCA, jenž by nám redukovala počet vstupních sloupců.
+	    </p>
+	    
+        </div>
+        <hr class="line">
+        
+        
+        
+        <div id="sec2" class="empty-sp"></div>
+        <div align="center">
+	    <h2>Výsledky</h2>
+	    <p class="txt-align">
+		Na níže uvedených sloupcových grafech (Variable Importance) je vykresleno v procentuálním zastoupení prvních 20 signifikantních měřených vlastností pro jednotlivé sportovce.
+	    </p>
+	    <p class="txt-align">
+		Confusion matrix popisuje jak byl daný algoritmus úspěšný, nebo-li jak přesný byl zvolený klasifikační model. Diagonální hodnoty ukazují v kolika případech byla predikce úspěšná, zatímco mimodiagonální hodnoty zobrazují kdy nebyla.
+		
+<!-- 		Diagonální hodnoty reprezentují počet případů pro které byla predikce úspěšná, zatímco pro mimodiagonální hodnoty nebyla. The higher the diagonal values of the confusion matrix the better, indicating many correct predictions. -->
+		
+<!-- 		Například u sportovce jménem Carlitos algoritmus 		 -->
+<!-- 		z 264 cviků předpovídá, že 264 patří do sestavy A a pouze 2 do sestavy D -->
+	    </p>
+	    <p class="txt-align">
+		Hodnota MSE značí Mean Squared Error a udává velikost jak moc se "liší" predikované hodnoty od hodnot vstupních. Často se lze setkat s touto hodnotou v procentech.
+	    </p>
+	    <p class="txt-align">
+		Konkrétně například u sportovce Carlitos byl cvik s pořadovým číslem (id) 9 algoritmem zařazen do sestavy A, dále id = 11 a 18 do B. 
+	    </p>
+	    <br/>
+	<table>
+		<tr>
+			<th align="center" colspan="3">carlitos</th>
+		</tr>
+		<tr valign="middle">
+			<td align="center">
+				<table class="id-class" width="100%">
+					<tr>    	  
+						<th>id</th>
+						<th>sestava</th>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>A</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>B</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>B</td>
+					</tr>
+				</table>
+				<br />
+				MSE = 0.03854
+			</td>
+			<td align="center"><img src="img/Variable_Importance_carlitos.png" height="250">
+			</td>
+			<td align="center"><img src="img/Confusion_Matrix_carlitos.png" height="250">
+			</td>
+		</tr>
+	</table>
+	
+	
+	<table>
+		<tr>
+			<th align="center" colspan="3">pedro</th>
+		</tr>
+		<tr valign="middle">
+			<td align="center">
+				<table class="id-class" width="100%">
+					<tr>    	  
+						<th>id</th>
+						<th>sestava</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>B</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>A</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>B</td>
+					</tr>
+				</table>
+				<br>
+				MSE = 0.03321
+			</td>
+			<td align="center"><img src="img/Variable_Importance_pedro.png" height="250">
+			</td>
+			<td align="center"><img src="img/Confusion_Matrix_pedro.png" height="250">
+			</td>
+		</tr>
+	</table>	
+	
+	<table>
+		<tr>
+			<th align="center" colspan="3">adelmo</th>
+		</tr>
+		<tr valign="middle">
+			<td align="center">
+				<table class="id-class" width="100%">
+					<tr>    	  
+						<th>id</th>
+						<th>sestava</th>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>A</td>
+					</tr>
+				</table>
+				<br>
+				MSE = 0.01969
+			</td>
+			<td align="center"><img src="img/Variable_Importance_adelmo.png" height="250">
+			</td>
+			<td align="center"><img src="img/Confusion_Matrix_adelmo.png" height="250">
+			</td>
+		</tr>
+	</table>	
+	
+	
+	<table>
+		<tr>
+			<th align="center" colspan="3">charles</th>
+		</tr>
+		<tr valign="middle">
+			<td align="center">
+				<table class="id-class" width="100%">
+					<tr>    	  
+						<th>id</th>
+						<th>sestava</th>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>A</td>
+					</tr>
+				</table>
+				<br>
+				MSE = 0.00754
+			</td>
+			<td align="center"><img src="img/Variable_Importance_charles.png" height="250">
+			</td>
+			<td align="center"><img src="img/Confusion_Matrix_charles.png" height="250">
+			</td>
+		</tr>
+	</table>
+	
+	
+	<table>
+		<tr>
+			<th align="center" colspan="3">eurice</th>
+		</tr>
+		<tr valign="middle">
+			<td align="center">
+				<table class="id-class" width="100%">
+					<tr>    	  
+						<th>id</th>
+						<th>sestava</th>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>A</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>B</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>E</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>B</td>
+					</tr>
+				</table>
+				<br>
+				MSE = 0.03148
+			</td>
+			<td align="center"><img src="img/Variable_Importance_eurico.png" height="250">
+			</td>
+			<td align="center"><img src="img/Confusion_Matrix_eurice.png" height="250">
+			</td>
+		</tr>
+	</table>
+
+
+	<table>
+		<tr>
+			<th align="center" colspan="3">jeremy</th>
+		</tr>
+		<tr valign="middle">
+			<td align="center">
+				<table class="id-class" width="100%">
+					<tr>    	  
+						<th>id</th>
+						<th>sestava</th>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>A</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>B</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>E</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>D</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>B</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>C</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>A</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>E</td>
+					</tr>
+				</table>
+<!-- 				<br> -->
+				MSE = 0.02644
+			</td>
+			<td align="center"><img src="img/Variable_Importance_jeremy.png" height="250">
+			</td>
+			<td align="center"><img src="img/Confusion_Matrix_jeremy.png" height="250">
+			</td>
+		</tr>
+	</table>
+
+
+        </div>        
+	<hr class="line">
+	
+	
+        <div id="sec3" class="empty-sp"></div>
+	<div>
+	      <h2>Použité zdroje</h2>
+	      <p><strong>Data</strong>: <a href="data/HAR_data.zip">HAR data</a></p>
+	      <ul>
+		  <li><a href="https://www.python.org">Python</a>, 2.7+</li>
+		  <li><a href="http://www.numpy.org">Numpy</a>, 1.8.2</li>
+		  <li><a href="http://pandas.pydata.org">Pandas</a>, 0.17.1</li>
+		  <li><a href="http://scikit-learn.org/stable">Scikit-learn</a>, 0.17</li>
+		  <li><a href="http://matplotlib.org">Matplotlib</a>, 1.4.2</li>
+	      </ul> 	      
+	  </div>
+		  
+	  <hr>
+	  <div class="cntr">2016, <a href="http://www.data-analytics.cz">Data Analytics</a></div>
+	  <hr>
+
+	  </div><!--/right-->
+	  </div><!--/row-->
+</div><!--/container-->
+
+
+
+<script>
+
+
+</script>
+
+
+	<!-- script references -->
+		<script src="../../../js/jquery.min.js"></script>
+		<script src="../../../js/bootstrap.min.js"></script>
+		<script src="../../../js/bootstrap.js"></script>
+<!-- 		<script src="js/scripts.js"></script> -->
+	</body>
+</html>

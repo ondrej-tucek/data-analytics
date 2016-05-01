@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Matematika</title>
+		<meta name="description" content="Plotly.js function reference. How to create, update, and modify graphs drawn with Plotly's Javascript Graphing Library.">
+		<meta name="generator" content="Bootply" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/bootstrap.css" rel="stylesheet">
+		
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+  
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="../../../css/style_portfolios.css" rel="stylesheet">
+		<link href="../../../css/normalize.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../../fonts/font-awesome/css/font-awesome.css">
+		<!--<link href="css/templatemo-style.css" rel="stylesheet">-->
+		
+		<script src="js/plotly-latest.min.js"></script>		
+		<script src="js/jquery-1.12.2.min.js" charset="utf-8"></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+		<!--<link rel="stylesheet" href="css/katex.min.css">
+		<script src="js/katex.min.js"></script>-->
+		
+	</head>
+	
+	<body data-spy="scroll" data-target="#affix-nav">  <!--data-offset="20"-->
+	
+	
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Matematika:</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Nelineární soustava obyčejných diferenciálních rovnic a její řešení</a></li>
+      </ul>
+    </nav>
+  </div>
+</nav>
+
+
+<div class="container">
+      <div class="row">
+      <!--left-->
+      <nav  id="affix-nav" class="col-xs-6 col-sm-3"> <!--id="leftCol"-->
+        <ul class="nav nav-pills nav-stacked" data-spy="affix">
+          <li class="active"><a href="#sec0">Nelineární soustava ODR</a></li>
+          <li><a href="#sec1">Nelineární soustava AR</a></li>
+          <li><a href="#sec2">Struktura matic</a></li>
+          <li><a href="#sec3">Graf řešení</a></li>
+          <li><a href="#sec4">Použité zdroje</a></li>
+          <li><a href="../../../index.html#works-section"><i class="fa fa-times"></i>  Close Project</a></li>
+<!--           <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button> -->
+        </ul>
+      </nav>
+
+      
+      <!--right-->
+      <div class="col-xs-6 col-sm-9">
+      <div id="sec0" class="empty-sp"></div>
+      <div>	  
+	  <h2>Nelineární soustava obyčejných diferenciálních rovnic</h2>
+	  <p>Mějme dánu soustavu čtyř nelineárních diferenciálních rovnic s okrajovými podmínkami:</p>
+	  <div align="center" >
+	      <div class="equation"  math-expr="\displaystyle
+	      \begin{array}{l c l c l c l}
+		      y^{\prime}_1 (t) & = & \cos(y_3 (t)), &  & y_1(0) = 0, &  & y_1(1) = 0.85	\color{white}{\rule[-1em]{0em}{0em}} \\
+		      y^{\prime}_2 (t) & = & \sin(y_3 (t)), &  & y_2(0) = 0, &  & y_2(1) = 0.50	\color{white}{\rule[-1em]{0em}{0em}} \\
+		      y^{\prime}_3 (t) & = & \displaystyle \frac{\cos(y_3 (t)) - \sin(y_3 (t))\lvert\sin(y_3 (t))\rvert}{y_4 (t)}, &  & y_3(1) = 0.2, &  & y_3(1) = 0.75	\color{white}{\rule[-1.25em]{0em}{0em}} \\
+		      y^{\prime}_4 (t) & = & \sin(y_3 (t)) - \cos(y_3 (t))\lvert\cos(y_3 (t))\rvert, &  & y_4(0) = 1.2, &  & y_4(1) = 1	\color{white}{\rule[-1em]{0em}{0em}}
+	      \end{array}">
+	      </div>
+	   </div>
+	  <p>pro <span class="equation" math-expr="0 \leq t \leq 1"></span>. Jednotlivé diferenciální rovnice přepíšeme pomocí konečných diferencí 
+	  
+	  <div align="center" class="equation" math-expr="\displaystyle u^{\prime} \approx \frac{u_{n+1} - u_n}{h} = \frac{f(u_{n+1}) + f(u_n)}{2},"></div>
+	  
+	  kde <span class="equation" math-expr="h = 1/N"></span> a <span class="equation" math-expr="n = 0,1,2\ldots, N"></span>. Přibližné řešení tedy určíme vektorem <span class="equation" math-expr="\mathbf{U} = (U_0, U_1, U_2, \ldots, U_N)"></span>, jehož složky aproximují hodnoty <span class="equation" math-expr="u_n"></span> přesného řešení v uzlech sítě. Následnou algebraickou soustavu rovnic pak budeme řešit pomocí Newtonovy metody.</p>
+	  <hr class="line">              
+      </div>
+      
+      
+        
+      <div id="sec1" class="empty-sp"></div>
+      <div>
+	  <h2>Nelineární soustava algebraických rovnic</h2>
+	  <p> Po rozepsání a úpravách dostaneme celkem <span class="equation" math-expr="4N"></span> rovnic pro <span class="equation" math-expr="4N"></span> neznámých. Výsledná matice je tedy rozměru <span class="equation" math-expr="4N \times 4N"></span>:</p>
+	  <div align="center" >
+	      <div class="equation"  math-expr="\displaystyle
+		  \mathbf{B} \cdot \mathbf{U} = \left(
+		  \begin{array}{c c c c}	
+		    \mathbf{A_1} & \mathbf{0} & \mathbf{0} & \mathbf{0} \\	
+		    \mathbf{0} & \mathbf{A_1} & \mathbf{0} & \mathbf{0} \\	
+		    \mathbf{0} & \mathbf{0} & \mathbf{A_2} & \mathbf{0} \\
+		    \mathbf{0} & \mathbf{0} & \mathbf{0} & \mathbf{A_2} 
+		  \end{array}
+		  \right) \cdot \left( \begin{array}{c}	
+		     \mathbf{Y_1} \\  \mathbf{Y_2} \\   \mathbf{Y_3} \\  \mathbf{Y_4}
+		  \end{array} \right) = \left( \begin{array}{c}	
+		     \mathbf{G_{Y_1}} \\  \mathbf{G_{Y_2}} \\   \mathbf{G_{Y_3}} \\  \mathbf{G_{Y_4}}
+		  \end{array} \right) = \mathbf{F(U)}">
+	      </div>
+	  </div>
+	  <p>
+	      kde například maticový součin <span class="equation" math-expr="\mathbf{A_1}\cdot\mathbf{Y_1} = \mathbf{G_{Y_1}}"></span> je ve tvaru</p>
+	  <div align="center" >
+	      <div class="equation"  math-expr="\displaystyle
+		  \left(
+		  \begin{array}{rrrrrr}
+			   1 & 0 & \ldots & \ldots & \ldots & 0 \\
+			  -1 & 1 & 0 & \ldots & \ldots & 0 \\
+			    0 &-1 & 1 & 0 & \ldots     & 0 \\ 
+			    \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+			    0 & \ldots& 0 & -1 & 1 & 0 \\
+			    0 & \ldots& \ldots& 0 & -1 & 1 \\
+			    0 & \ldots & \ldots & 0 & 0 & -1
+			  \end{array} \right) \cdot \left(
+		  \begin{array}{l}	
+		    Y_1^1 \color{white}{\rule[-1em]{0em}{0em}}\\  Y_1^2 \color{white}{\rule[-1em]{0em}{0em}} \\ \quad\vdots \color{white}{\rule[-1em]{0em}{0em}} \\ Y_1^{N-2} \color{white}{\rule[-1em]{0em}{0em}} \\ Y_1^{N-1} 
+		  \end{array}
+		  \right) = \left(
+		  \begin{array}{l}	
+		    \frac{h}{2} \big(\cos(Y_3^1) + \cos(Y_3^0)\big) \color{white}{\rule[-1.2em]{0em}{0em}} \\
+		    \frac{h}{2} \big(\cos(Y_3^2) + \cos(Y_3^1)\big) \color{white}{\rule[-1em]{0em}{0em}} \\
+					  \qquad\vdots \\ 
+		    \frac{h}{2} \big(\cos(Y_3^N) + \cos(Y_3^{N-1})\big) - 0.85
+		  \end{array} \right)">
+	      </div>
+	  </div>	      
+	  <p>
+	      Výše uvedenou nelineární soustavu nejprve upravíme na tvar</p>    
+	      <div align="center" class="equation"  math-expr="\displaystyle \mathbf{\Phi(U)} = \mathbf{B} \cdot \mathbf{U} - \mathbf{F(U)} = \mathbf{0}"></div>
+	      <p>Iterace Newtonovy metody jsou pak dány předpisem</p>
+	      <div align="center" class="equation"  math-expr="\displaystyle \mathbf{U}^{(k+1)} = \mathbf{U}^{(k)} - [\mathbf{\Phi}^{\prime}(\mathbf{U}^{(k)})]^{-1} \mathbf{\Phi}(\mathbf{U}^{(k)}), \quad k = 0, 1, \ldots"></div>
+	  <p> přičemž <span class="equation" math-expr="\mathbf{U}^{(0)}"></span> je zvolené počáteční přiblížení. Jak vypadá matice <span class="equation"  math-expr="B"></span> a Jacobiova matice <span class="equation" math-expr="\mathbf{\Phi}^{\prime}(\mathbf{U})"></span> můžeme vidět <a href="#sec2">níže</a>.</p>
+	  <hr class="line">
+      </div>
+      
+      
+        
+      <div id="sec2" class="empty-sp"></div>
+      <div id="image">
+	  <h2>Struktura matic</h2><br/>
+	  <div class="row">
+	    <div class="col-md-6">
+		<img src="img/matB_small.png" class="img-responsive">
+		<figcaption>Matice B</figcaption>
+	    </div>
+	    <div class="col-md-6">
+		<img src="img/matJacb_small.png" class="img-responsive">
+		<figcaption>Jacobiova matice <span class="equation" math-expr="\mathbf{\Phi}^{\prime}(\mathbf{U})"></span></figcaption>
+	    </div>
+	  </div>
+	  <hr class="line">
+      </div>
+      
+      
+        
+      <div id="sec3" class="empty-sp"></div>
+      <div>
+	  <h2>Průběh jednotlivých řešení</h2>
+	  <div align="center" >
+		<div id="myDiv">
+	  </div>
+	  <hr class="line">
+      </div>              
+      
+      
+      
+      <div id="sec4" class="empty-sp"></div>
+      <div>
+	  <h2>Použité zdroje</h2>
+	  <p><strong>Data</strong>: <a href="http://heath.cs.illinois.edu/scicomp/">Scientific Computing: An Introductory Survey</a></p>
+	  <p><strong>Graf</strong>: <a href="https://plot.ly/">Plotly</a></p>
+      </div>
+	      
+      <hr>
+      <div class="cntr">2016, <a href="http://www.data-analytics.cz">Data Analytics</a></div>
+      <hr>
+
+      </div><!--/right-->
+      </div><!--/row-->
+</div><!--/container-->
+
+
+<script>
+    var y1 = {  x: [0,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00],  
+                    y: [0,0.0488,0.0971,0.1449,0.1921,0.2386,0.2845,0.3295,0.3739,0.4174,0.4602,0.5022,0.5434,0.5839,0.6237,0.6629,0.7014,0.7393,0.7767,0.8136,0.85],  
+                    mode: 'lines',
+                    name: 'y1(t)',
+                    showlegend: true,
+                    type: 'lines'};
+    var y2 = {  x: [0,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00],  
+                    y: [0,0.0109,0.0237,0.0384,0.0549,0.0731,0.0931,0.1147,0.1378,0.1624,0.1883,0.2154,0.2437,0.2730,0.3032,0.3343,0.3662,0.3988,0.4320,0.4657,0.50],  
+                    mode: 'lines',
+                    name: 'y2(t)',
+                    showlegend: true,
+                    type: 'lines'};
+    var y3 = {  x: [0,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00],  
+                    y: [0.2004,0.2394,0.2784,0.3172,0.3554,0.3928,0.4291,0.4641,0.4976,0.5294,0.5595,0.5877,0.6139,0.6384,0.6609,0.6817,0.7008,0.7182,0.7342,0.7487,0.7619],  
+                    mode: 'lines',
+                    name: 'y3(t)',
+                    showlegend: true,
+                    type: 'lines'};
+    var y4 = {  x: [0,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00],  
+                    y: [1.2080,1.1713,1.1374,1.1064,1.0783,1.0533,1.0313,1.0122,0.9960,0.9827,0.9720,0.9638,0.9581,0.9546,0.9531,0.9536,0.9558,0.9595,0.9648,0.9714,0.9791],  
+                    mode: 'lines',
+                    name: 'y4(t)',
+                    showlegend: true,
+                    type: 'lines'};
+                        
+    var data = [ y1, y2, y3, y4 ];
+    var layout = {  
+	height: 500,  
+	width: 580,
+	margin: {
+	  r: 0, 
+	  t: 25, 
+	  b: 40, 
+	  l: 50
+	},
+	xaxis: {
+	  autotick: false,
+	  ticks: 'outside',
+	  tick0: 0,
+	  dtick: 0.1,
+	  ticklen: 4,
+	  tickwidth: 1,
+	  tickcolor: '#000',
+	  title: 't', 
+	  rangemode: 'nonnegative',
+	  range: [0, 1]
+	},
+	yaxis: {
+	  autotick: false,
+	  ticks: 'outside',
+	  tick0: 0,
+	  dtick: 0.1,
+	  ticklen: 4,
+	  tickwidth: 1,
+	  tickcolor: '#000',
+	  rangemode: 'tozero',
+	  range: [0, 1.3]
+	},
+	annotations: [{
+	  xref: 'paper',
+	  yref: 'paper',
+	  x: -0.05,
+	  xanchor: 'right',
+	  y: 0.75,
+	  yanchor: 'bottom',
+	  text: 'yi(t)',
+	  showarrow: false
+	}, {
+	  xref: 'paper',
+	  yref: 'paper',
+	  x: 1,
+	  xanchor: 'left',
+	  y: 0,
+	  yanchor: 'top',
+	  text: ' ',
+	  showarrow: false
+	}],
+    };
+
+    Plotly.newPlot('myDiv', data, layout);
+</script>
+
+
+<script type="text/javascript">
+
+    // grab all elements in DOM with the class 'equation'
+    var tex = document.getElementsByClassName("equation");
+
+    // for each element, render the expression attribute
+    Array.prototype.forEach.call(tex, function(el) {
+        katex.render(el.getAttribute("math-expr"), el);
+    });
+
+</script>
+
+
+	<!-- script references -->
+		<script src="../../../js/jquery.min.js"></script>
+		<script src="../../../js/bootstrap.min.js"></script>
+		<script src="../../../js/bootstrap.js"></script>
+<!-- 		<script src="js/scripts.js"></script> -->
+	</body>
+</html>

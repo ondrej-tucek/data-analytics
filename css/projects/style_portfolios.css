@@ -1,0 +1,212 @@
+/*
+A Bootstrap 3.1 affix sidebar template
+from http://bootply.com
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+body {
+/*  padding-top:50px; */
+    position: relative;
+    /*data-spy:scroll;
+    data-target:#myScrollspy;
+    data-offset:20;*/
+}
+p.txt-align {
+     text-align: justify;
+}
+
+div.equation {
+    margin-top: 1.5em; 		/*horni okraj*/
+    margin-bottom: 1.2em	/*dolni okraj*/
+}
+
+#image {
+    text-align: center;
+}
+
+figcaption {
+    margin: 20px 0 0 0;
+    font-family: Arial;
+/*     font-variant: small-caps;     */
+/*     font-weight: bold; */
+/*     color: #bb3333; */
+}
+
+hr.line {
+    margin-top: 6em;
+/*     width: 90px; */
+/*     color: red; */
+/*     margin-bottom: 5em; */
+/*     border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+}
+
+.empty-sp {
+    margin-bottom: 80px;
+    height: 0px;
+/*     background: #ffffff; */
+/*     background: red; */
+}
+
+.cntr {text-align: center;}
+
+/*.affix {
+    top: 70px;
+}*/
+
+ul.nav-pills {
+    top: 80px;
+    position: fixed;
+}
+div.col-sm-9 div {
+/*    height: 250px;
+    font-size: 28px;
+    margin-top:125px;*/
+}
+
+h2 {text-align: center; padding-bottom: 10px;}
+/* #sec0 > h2 {color: #fff; background-color: #1E88E5;} */
+#sec1 > h2 {color: #fff; background-color: #1E88E5;}
+#sec2 > h2 {color: #fff; background-color: #673ab7;}
+#sec3 > h2 {color: #fff; background-color: #ff9800;}
+#sec4 > h2 {color: #fff; background-color: #00bcd4;}
+/* #section42 {color: #fff; background-color: #009688;} */
+
+table.id-class tr td {
+    padding: 3px;
+    text-align: center;
+/*     width: 100%; */
+}
+
+
+table {
+    border: 0;
+    padding: 0;
+    margin: 0 0 20px 0;
+    border-collapse: collapse;
+}
+th {
+    padding: 5px;
+    /* NOTE: th padding must be set explicitly in order to support IE */
+    text-align: center;
+    font-weight:bold;
+    line-height: 2em;
+    color: #FFF;
+    background-color: #555;
+}
+tbody td {
+    padding: 8px;
+    line-height: 18px;
+    border-top: 1px solid #E0E0E0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+/*tbody tr:nth-child(2n) {
+    background-color: #F7F7F7;
+}*/
+tbody tr:hover {
+    background-color: #EEEEEE;
+}
+/*td {
+    text-align: center;
+}
+td:first-child, th:first-child {
+    text-align: center;
+}*/
+.hover {
+  background: #EEEEEE;
+}    
+        
+
+[data-tooltip]{
+	position:relative;
+}
+[data-tooltip]:after{
+/* 	content:attr(title); */
+/* 	content: "Rok, Lihoviny (40%), Víno, Pivo, Nápoje celkem, Cigarety"; */
+	content: attr(data-tooltip);
+	color:#fff;
+	background:#333;
+	background:rgba(51,51,51,0.95);
+	padding:5px;
+	position:absolute;
+	left:-9999px;
+	opacity:0;
+	bottom:100%;
+	white-space:nowrap;
+	-webkit-transition:0.25s linear opacity;
+}
+[data-tooltip]:hover:after{
+	left:5px;
+	opacity:1;
+}        
+
+/*#nav.affix {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    z-index:10;
+}
+
+#sidebar.affix {
+    position: fixed;
+    top: 80px;
+}
+#sidebar.affix-top {
+    position: static;
+}*/
+
+
+/*.affix {
+  top: 20px;
+  width: 213px;
+}*/
+/*
+@media (min-width: 1200px) {
+  .affix {
+    width: 263px;
+  }         
+}*/
+
+
+
+
+
+/*@media screen and (max-width: 810px) {
+  #sec1, #sec2, #sec3, #sec4 {
+      margin-left: 150px;
+  }
+}*/
+  
+/*.navbar-bright {
+ background-color:#111155;
+ color:#fff;
+}*/
+
+/*.affix-top,.affix{
+ position: static;
+}*/
+
+/*@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  	width:228px;
+  }
+  
+  #sidebar.affix {
+    background-color: #5f6d7e;
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}*/
+
+/*#sidebar li.active {
+  border:0 #eee solid;
+  border-right-width:5px;
+}*/
