@@ -191,7 +191,7 @@ var chart = c3.generate({
 </script> 
 
 <script> 
-$.getJSON('../data/data.json', function (data) {
+$.getJSON('../data/project1.json', function (data) {
     for (var i = 0; i < data.data1.length; i++) {
         tr = $('<tr/>');
 	tr.append("<td data-tooltip=\"Rok\" align=\"center\">" + data.data1[i] + "</td>");
