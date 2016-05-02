@@ -456,8 +456,39 @@
 					      <p class="help-block text-danger"></p>
 					    </div>
 					    <div id="success"></div>
-					    <p class="col text-center"><input type="submit" class="btn btn-default" value="Send" /></p>
-					    <input type="hidden" name="_next" value="//data-analytics.cz/thankyou.html" />
+					    <!-- <p class="col text-center"><input type="submit" class="btn btn-default" value="Send" /></p> -->
+					    <p class="col text-center"><input type="submit" class="btn btn-default open-modal" value="Send" /></p>
+					    <input type="hidden" name="_next" value="//data-analytics.cz" />
+					    
+				        <!-- Modal HTML -->
+					    <div id="myModal" class="modal fade">
+					      <div class="modal-dialog">
+					        <div class="modal-content">
+					          <div class="modal-header">
+					            <button type="button" class="close" data-dismiss="modal"
+					              aria-hidden="true">&times;</button>
+					            <h4 class="modal-title">Confirmation</h4>
+					          </div>
+					          <div class="modal-body">
+					            <p>Do you want to save changes you made to document before
+					              closing?</p>
+					            <p class="text-warning">
+					              <small>If you don't save, your changes will be lost.</small>
+					            </p>
+					          </div>
+					          <div class="modal-footer">
+					            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					            <button type="button" class="btn btn-primary">Save
+					              changes</button>
+					          </div>
+					        </div>
+					        <!-- /.modal-content -->
+					      </div>
+					      <!-- /.modal-dialog -->
+					    </div>
+					    <!-- /.modal -->
+
+					    
 <!-- 					    </div> -->
 				      </form>     
 				</div>
@@ -475,242 +506,10 @@
   </div>
 </div>
 
-	
+
 <div id="footer">
   <div class="container">
       <p>Copyright © 2016, Data Analytics, All Rights Reserved.</p>
-  </div>
-</div>
-
-
-
-<!-- Portfolio Modals --> 
-<!-- Use the modals below to showcase details about your portfolio projects! --> 
-
-<!-- Portfolio Modal 1 -->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/01-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Portfolio Modal 2 -->
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/02-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Modal 3 -->
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/03-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Modal 4 -->
-<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/04-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Modal 5 -->
-<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/05-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Modal 6 -->
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/06-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Modal 7 -->
-<div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/07-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Modal 8 -->
-<div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"> </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body"> 
-            <!-- Project Details Go Here -->
-            <h2>Project Title</h2>
-            <p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
-            <img class="img-responsive img-centered" src="img/portfolio/08-preview.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus, et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro, graeco urbanitas reformidans quo id. Error congue tacimates ei vis, facer facete ius cu, audiam prodesset pri ut. Id semper fuisset vel, has dolorum menandri eu.</p>
-            <ul class="list-inline">
-              <li><strong>Client</strong>: John Doe</li>
-              <li><strong>Category</strong>: Web Design</li>
-            </ul>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -748,6 +547,15 @@
 
       });
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.open-modal').click(function(){
+    $('#myModal').modal('show');
+  });
+});
+</script>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
