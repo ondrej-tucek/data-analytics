@@ -149,6 +149,11 @@ var chart = c3.generate({
 	    tick: {
 		format: "%Y" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
 	    }
+	},
+	y: {
+	    tick: {
+                format: function (d) { return d + " l"; }
+	    }
 	}
     },
     tooltip: {
@@ -175,12 +180,17 @@ var chart = c3.generate({
 	}
     },
     axis: {
-      x: {
-	type: 'timeseries',
-	tick: {
-	    format: "%Y" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+	x: {
+	    type: 'timeseries',
+	    tick: {
+	        format: "%Y" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+	    }
+	},
+	y: {
+	    tick: {
+	        format: function (d) { return d + " ks"; }
+	    }
 	}
-      }
     },
     tooltip: {
 	format: {
