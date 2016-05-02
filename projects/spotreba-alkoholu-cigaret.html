@@ -21,7 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="../fonts/font-awesome/css/font-awesome.css">
 		<!--<link href="css/templatemo-style.css" rel="stylesheet">-->
 		
-		<link rel="stylesheet" type="text/css" href="css/c3.css">
+		<link href="../css/projects/c3.css" rel="stylesheet" type="text/css">
 		<script src="../js/projects/d3.v3.min.js" charset="utf-8"></script>
 		<script src="../js/projects/c3.js"></script>
 		<script src="../js/projects/jquery-1.12.2.min.js" charset="utf-8"></script>
@@ -191,7 +191,7 @@ var chart = c3.generate({
 </script> 
 
 <script> 
-$.getJSON('../projects/data.json', function (data) {
+$.getJSON('../data/data.json', function (data) {
     for (var i = 0; i < data.data1.length; i++) {
         tr = $('<tr/>');
 	tr.append("<td data-tooltip=\"Rok\" align=\"center\">" + data.data1[i] + "</td>");
