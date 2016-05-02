@@ -553,6 +553,9 @@ $(document).ready(function(){
   $('.open-modal').click(function(){
     $('#myModal').modal('show');
   });
+  $("#myModal").on('hidden.bs.modal', function(){
+    console.log("Modal window has been completely closed.");
+  });
 });
 </script>
 
