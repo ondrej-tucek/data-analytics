@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <title>Data Analytics</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">		
+    
+    <meta name="description" content="Data Analytics - Vizualizace a analýza open/big dat a nejen...">
+    <meta name="author" content="Ondřej Tuček, 2016">		
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<!--     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" /> -->
+    <link rel="stylesheet" href="../css/projects/leaflet.css" />
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+    <![endif]-->
+
+    <script src="../js/projects/leaflet-src.js"></script>
+    <script src="../js/projects/d3.v3.js"></script>
+    <script src="../js/projects/lodash.underscore.min.js"></script>
+    
+    <script type="text/javascript" src="../js/projects/numeral.min.js"></script>
+    <script type="text/javascript" src="../js/projects/colorbrewer.js"></script>
+    <script type="text/javascript" src="../js/projects/popup.js"></script>
+    <script type="text/javascript" src="../js/projects/leaflet.points-layer.js"></script>
+
+    <style type="text/css">
+      html, body { margin: 0; padding: 0; height: 100%; }
+      table.tooltip { border-spacing: 10px 1px; }
+      td.right-align {
+	  text-align: right;
+	  vertical-align: middle;
+      }
+      #map {
+	  width: 850px;
+	  height:750px;
+	  position: absolute;
+/* 	  display: inline-block; */
+/* 	  margin-left: 150px; */
+/* 	  margin-top: 20px; */
+      }
+      /* css to customize Leaflet default styles  */
+      .leaflet-popup-content ul { padding-left: 1.5em; }
+      .leaflet-popup-close-button { display: none; }  
+      .custom-popup .leaflet-popup-content-wrapper {
+	  background: #2c3e50;
+	  color:#fff;
+	  font-size:14px;
+	  line-height:24px;
+	  border-radius: 10px !important;
+	  pointer-events: none;
+      }
+      .custom-popup .leaflet-popup-tip-container {
+	width:30px;
+	height:15px;
+	}
+      .custom-popup .leaflet-popup-tip {
+	background: #2c3e50;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+      }      
+    </style>
+  </head>
+  
+
+  <body>
+    <div class='custom-popup' id='map' data-source="data/vypujcky-2015_final_ALL.json"></div>
+    <script type="text/javascript">
+    (function () {
+        var extent, scale,
+            scheme_id = "BuPu", classes = 9, 
+            reverse = false;
+            scheme = colorbrewer[scheme_id][classes],
+            container = L.DomUtil.get('map'),
+            map = L.map(container).setView([50.0700, 14.44], 12);
+
+        L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+            attribution: '<a href="http://www.data-analytics.cz">Data Analytics</a>, <a href="http://www.openstreetmap.org/">OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 17
+        }).addTo(map);
+
+        d3.json(container.dataset.source, function(collection) {
+            L.pointsLayer(collection, {
+                radius: function (d) {
+//                     return Math.log2(d.sign_count[0]);
+                    return Math.pow(d.sign_count[0], 0.4)*Math.log2(d.sign_count[0])/40;
+//                     return (d.sign_count[0]/1412);
+                },
+                applyStyle: circle_style
+            }).addTo(map);
+        });
+
+        function circle_style(circles) {
+            if (!(extent && scale)) {
+                extent = d3.extent(circles.data(), function (d) { return d.properties.count_all; });
+                scale = d3.scale.log()
+                        .domain(reverse ? extent.reverse() : extent)
+                        .range(d3.range(classes));
+            }
+            circles.attr('opacity', 0.94)
+                .attr('stroke', scheme[classes - 1])
+                .attr('stroke-width', 1)
+                .attr('fill', function (d) {
+                    return scheme[(scale(d.properties.count_all)*8).toFixed()];
+                });
+
+	    var layerPopup;
+            circles.on('mouseover', function (d, i) {
+                L.DomEvent.stopPropagation(d3.event);
+		var t = generateTable(d);
+                var data = {
+                        name: d.properties.designation,
+                        distr: d.properties.distric,
+                        sig: d.signature,
+                        sig_c: d.sign_count,
+                        c_all: d.properties.count_all,
+                    };
+
+                layerPopup = L.popup()
+                    .setLatLng([d.geometry.coordinates[1], d.geometry.coordinates[0]])
+                    .setContent(_.template(t, data))
+                    .openOn(map);
+
+            });
+            circles.on('mouseout', function (e) {
+		if (layerPopup && map) {
+		    map.closePopup(layerPopup);
+		    layerPopup = null;
+		}
+	    });
+        }
+    }());
+    
+    function generateTable(d)
+    {
+	var s = "";
+	var b = d.sign_count.length;
+	for (var i=0; i<b; i++) {
+	    s += '<tr><td class="right-align"> <%- (100*sig_c['+i+']/c_all).toFixed(1) %>% </td><td class="right-align"> <%- Number(sig_c['+i+']).toLocaleString() %> </td><td> <%- sig['+i+'] %> </td></tr>';
+	}	
+	var out = '<h3><%- name %> - <%- distr %></h3>' +
+	    '<table class="tooltip">' +
+		'<tr><td class="right-align"><strong> 100% </strong></td><td class="right-align"><strong> <%- Number(c_all).toLocaleString() %> </strong></td><td><strong> Signatura </strong></td></tr>' +
+		s +
+	    '</table>';
+	return out;
+    }
+    </script>
+  </body>
+</html>
+
