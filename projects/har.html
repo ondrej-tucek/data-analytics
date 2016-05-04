@@ -73,7 +73,7 @@
 	  <p class="txt-align">
 	    Máme-li dostatek dat ať už z různých měření nebo z databází, můžeme na základě jejich analýzy predikovat nebo vizualizovat slednovaný jev nebo vlastnost, která nás zajímá. Přesnost posouzení pak závisí na velikosti a kvalitě těchto dat. Rozhodujícími faktory jsou zde také čas a peníze. Jsou-li data například ve stovkách gigabajtů, musíme se zajímat i o to, kolik těchto analýz chceme udělat a jak rychle. Stačí nám jich pár nebo budeme nově aktualizovaná data analyzovat opakovaně? Vyplatí se nám jedna výpočetní stanice nebo vícero? </p>
 	  <p class="txt-align">
-	    Následující ukázkový příklad slouží k demonstraci jak lze analyzovat například cvičební sestavu ve fitnessu ve spojení s chytrými technologiemi jenž jsou v dnešní době levně dostupné.
+	    Následující ukázkový příklad slouží k demonstraci jak lze analyzovat například cvičební sestavu ve fitnessu ve spojení s chytrými technologiemi, jež jsou v dnešní době levně dostupné.
 	  </p>
 	  
 	  <hr>
@@ -81,15 +81,14 @@
 	  <div class="row">
 	      <div class="col-md-8">
 	      <p class="txt-align">
-		  Mějme dáno šest sportovců ve fitnessu. Všichni sportovci mají na sobě tři sensory tak jak je naznačeno na obrázku vpravo (umístění senzoru je znázorněno červeným obdélníčkem). Čtvrtý sensor je uchycen k čince. Díky těmto senzorům jsme schopni zjistit orientaci, natočení a rychlost pohybu v prostoru neboli víme jaký cvik každý sportovec udělal. Tyto real-time měřená data pak pomocí Bluetooth nebo wi-fi zaznamenáváme na počítač.
+		  Mějme dáno šest sportovců ve fitnessu. Všichni sportovci mají na sobě tři sensory, tak jak je naznačeno na obrázku vpravo (umístění senzoru je znázorněno červeným obdélníčkem). Čtvrtý sensor je uchycen k čince. Díky těmto senzorům jsme schopni zjistit orientaci, natočení a rychlost pohybu v prostoru, neboli víme jaký cvik každý sportovec udělal. Tato real-time měřená data pak pomocí Bluetooth nebo wi-fi zaznamenáváme na počítač.
 	      </p>
 	      <p class="txt-align">
-		  Sportovci byli požádáni aby provedli s činkou pět různých cvičebních sestav. Těchto pět sestav pro jednoduchost označme velkými písmeny A až E. Nyní si musíme uvědomit co chceme analyzovat. Chceme řešit úlohu kdy sportovci cvičí všech pět sestav 
-		  správně a u dalšího cviku určit do jaké sestavy cvik patří? Nebo chceme řešit úlohu kdy například sestava A odpovídá dobře provedeným cvikům, zatímco zbylé nikoliv a úkolem je rozponat zda je další cvik správně proveden? 		  
+		  Sportovci byli požádáni, aby provedli s činkou pět různých cvičebních sestav. Těchto pět sestav pro jednoduchost označme velkými písmeny A až E. Nyní si musíme uvědomit, co chceme analyzovat. Chceme řešit úlohu, kdy sportovci cvičí všech pět sestav správně, a u dalšího cviku určit do jaké sestavy cvik patří? Nebo chceme řešit úlohu, kdy například sestava A odpovídá dobře provedeným cvikům, zatímco zbylé nikoliv a úkolem je rozponat, zda je další cvik správně proveden? 		  
 <!-- 		  Například sestava A  reprezentuje přesně a správně provedený cvik, B třeba zvedání činky jen "na půli cesty" apod.  -->
 	      </p>	      
 	      <p class="txt-align">
-		  Označme tyto naměřená data jako dataset <i>training data</i>. Dataset tedy obsahuje informace o tom, do jaké sestavy cvik patří s tím, že tento cvik je jednoznačně určen naměřenými hodnotami ze senzorů. Druhá sada naměřených dat, dataset <i>testing data</i>, pak obsahuje pouze označení cviku (zde jej značíme id = číslo) a k němu odpovídající hodnoty ze senzorů. U těchto cviků pak chceme určit do jaké sestavy cvik patří podle toho jaký problém řešíme, viz odstavec výše.
+		  Označme tato naměřená data jako dataset <i>training data</i>. Dataset tedy obsahuje informace o tom, do jaké sestavy cvik patří s tím, že tento cvik je jednoznačně určen naměřenými hodnotami ze senzorů. Druhá sada naměřených dat, dataset <i>testing data</i>, pak obsahuje pouze označení cviku (zde jej značíme id = číslo) a k němu odpovídající hodnoty ze senzorů. U těchto cviků pak chceme určit do jaké sestavy cvik patří podle toho, jaký problém řešíme, viz odstavec výše.
 	      </p>
 	      </div> <!--end of col-md-8-->
 	      <div class="col-md-4"><img src="../img/projects/location-sensors.png" class="img-responsive"></div>
@@ -106,7 +105,7 @@
 		Z obou <a href="#sec3">datasetů</a> vybereme jenom ty sloupce, které obsahují relevantní data. Sloupce obsahující prázdná pole nebo nedefinované znaky do analýzy nezahrneme. Z původních dat o "objemu" 19 622 řádků a 160 sloupců jsme tak data redukovali na 52 sloupců za stávajících řádků.	      
 	    </p>
 	    <p class="txt-align">
-		K analýze jsme zvolili metodu <b>RandomForestClassifier</b>, neboť se ukázalo, že na těchto datech je velice rychlá. Navíc nám může poskytnout vodítko jaké sloupce jsou více signifikantní než jiné, viz odstavec <a href="#sec2">Výsledky</a>. Díky rychlosti výpočtu (cca několik vteřin) můžeme zavhrnout například metodu PCA, jenž by nám redukovala počet vstupních sloupců.
+		K analýze jsme zvolili metodu <b>RandomForestClassifier</b>, neboť se ukázalo, že na těchto datech je velice rychlá. Navíc nám může poskytnout vodítko, jaké sloupce jsou více signifikantní než jiné, viz odstavec <a href="#sec2">Výsledky</a>. Díky rychlosti výpočtu (cca několik vteřin) můžeme zavhrnout například metodu PCA, jež by nám redukovala počet vstupních sloupců.
 	    </p>
 	    
         </div>
@@ -132,7 +131,7 @@
 		Hodnota MSE značí Mean Squared Error a udává velikost jak moc se "liší" predikované hodnoty od hodnot vstupních. Často se lze setkat s touto hodnotou v procentech.
 	    </p>
 	    <p class="txt-align">
-		Konkrétně například u sportovce Carlitos byl cvik s pořadovým číslem (id) 9 algoritmem zařazen do sestavy A, dále id = 11 a 18 do B. 
+		Konkrétně například u sportovce Carlitose byl cvik s pořadovým číslem (id) 9 algoritmem zařazen do sestavy A, dále id = 11 a 18 do B. 
 	    </p>
 	    <br/>
 	<table>
