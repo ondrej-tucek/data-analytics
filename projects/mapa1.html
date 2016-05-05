@@ -81,7 +81,7 @@
             L.pointsLayer(collection, {
                 radius: function (d) {
 //                     return Math.log2(d.sign_count[0]);
-                    return Math.pow(d.sign_count[0], 0.4)*Math.log2(d.sign_count[0])/40;
+                    return Math.pow(d.sign_count[0], 0.4)*Math.log2(d.sign_count[0])/40-3;
 //                     return (d.sign_count[0]/1412);
                 },
                 applyStyle: circle_style
