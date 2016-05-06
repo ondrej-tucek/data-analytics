@@ -459,7 +459,8 @@
 					    </div>
 					    <div id="success"></div>
 					    <!-- <p class="col text-center"><input type="submit" class="btn btn-default" value="Send" /></p> -->
-					    <p class="col text-center"><input type="submit" class="btn btn-default" value="Send" /></p>
+					    <p class="col text-center"><input type="submit" onclick="openModal()" class="btn btn-default" value="Send" /></p>
+					    <input type="hidden" name="_next" value="data-analytics.cz/#contact-section" />
 
 <!-- 					    </div> -->
 					</form>     
@@ -560,7 +561,6 @@ $(function() {
 	      if (firstName.indexOf(' ') >= 0) {
 				firstName = name.split(' ').slice(0, -1).join(' ');
 	      }        
-	      $('#success').html("<input type=\"hidden\" name=\"_next\" value=\"data-analytics.cz/#contact-section\" />");
   		  $('#myModal').modal("show");
 	},
 	filter: function() {
