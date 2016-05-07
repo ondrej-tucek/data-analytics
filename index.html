@@ -459,7 +459,7 @@
 					    </div>
 					    <div id="success"></div>
 					    <!-- <p class="col text-center"><input type="submit" class="btn btn-default" value="Send" /></p> -->
-					    <p class="col text-center"><input type="submit" onclick="openModal()" class="btn btn-default" value="Send" /></p>
+					    <p class="col text-center"><input type="submit" id="sentBtn" class="btn btn-default" value="Send" /></p>
 					    <input type="hidden" name="_next" value="#success" />
 
 <!-- 					    </div> -->
@@ -496,9 +496,9 @@
 				<h4 class="modal-title">Děkuji za zprávu.</h4>
 			</div>
 		<div class="modal-body">
-			<p>Jakmile budu moct ozvu se Vám.</p>
-			<div align="center">Přeji krásný den, s pozdravem </div>
-			<div align="right">Ondřej Tuček</div>
+			<p>Jakmile budu moct, ozvu se Vám.</p>
+			<p>S pozdravem a přáním krásného dne</p>
+			<p>Ondřej Tuček</p>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
@@ -543,41 +543,14 @@
 </script>
 
 <script>  
-$(function() {
-    $("input,textarea").jqBootstrapValidation({
-	preventSubmit: true,
-	submitError: function($form, event, errors) {
-	  // something to have when submit produces an error ?
-	  // Not decided if I need it yet
-	},
-	submitSuccess: function($form, event) {
-	      event.preventDefault(); // prevent default submit behaviour
-	      // get values from FORM
-	      var name = $("input#name").val();  
-	      var email = $("input#email").val(); 
-	      var message = $("textarea#message").val();
-	      var firstName = name; // For Success/Failure Message
-		// Check for white space in name for Success/Fail message
-	      if (firstName.indexOf(' ') >= 0) {
-				firstName = name.split(' ').slice(0, -1).join(' ');
-	      }        
-  		  $('#myModal').modal("show");
-	},
-	filter: function() {
-		  return $(this).is(":visible");
-	},
+$(function () {
+    $("#sentBtn").click(function(){
+		if ($("input,textarea").jqBootstrapValidation("hasErrors")) {
+	// 	    alert("Something is wrong!");
+		}
+		else {$('#myModal').modal('show');}
     });
-
-    $("a[data-toggle=\"tab\"]").click(function(e) {
-		  e.preventDefault();
-		  $(this).tab("show");
-    });
-};    
-
-/*When clicking on Full hide fail/success boxes */ 
-$('#name').focus(function() {
-     $('#success').html('');
-  });
+});
 </script>
 
 <script>
