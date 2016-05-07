@@ -443,7 +443,7 @@
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-5">
-					<form action="https://formspree.io/info@data-analytics.cz" name="sentMessage" method="POST" novalidate>
+					<form id="contactForm" name="sentMessage" novalidate>
 					    <h3>Send Message</h3>
 						<div class="form-group">
 							<input name="name" type="text" id="name" class="form-control" data-validation-required-message="Please enter your name" placeholder="Name" required="required">
@@ -542,7 +542,7 @@
       });
 </script>
 
-<script>  
+<!-- <script>  
 $(function () {
     $("#sentBtn").click(function(){
 		if ($("input,textarea").jqBootstrapValidation("hasErrors")) {
@@ -550,6 +550,63 @@ $(function () {
 		}
 		else {$('#myModal').modal('show');}
     });
+});
+</script> -->
+
+<script>
+$(function() {
+	$("input,textarea").jqBootstrapValidation({
+		preventSubmit: true,
+		submitError: function($form, event, errors) {
+		// something to have when submit produces an error ?
+		// Not decided if I need it yet
+		},
+		submitSuccess: function($form, event) {
+			event.preventDefault(); // prevent default submit behaviour
+			// get values from FORM
+			var name = $("input#name").val();  
+			var email = $("input#email").val(); 
+			var message = $("textarea#message").val();
+			
+			$.ajax({
+				url: "https://formspree.io/info@data-analytics.cz",
+				method: "POST",
+				data: {name: name, email: email, message: message},
+				dataType: "json",
+				cache: false,
+				success: function() {  
+					//clear all fields
+					$('#contactForm').trigger("reset");
+					// Success message
+					$('#myModal').modal('show');
+				},
+				error: function() {		
+					// Fail message
+					$('#success').html("<div class='alert alert-danger'>");
+						$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+						 .append( "</button>");
+						$('#success > .alert-danger').append("<strong>Sorry "+firstName+" it seems that my mail server is not responding...</strong> Could you please email me directly to <a href='mailto:me@example.com?Subject=Message_Me from myprogrammingblog.com'>me@example.com</a> ? Sorry for the inconvenience!");
+					 $('#success > .alert-danger').append('</div>');
+					//clear all fields
+					$('#contactForm').trigger("reset");
+				},
+			})
+		},
+		filter: function() {
+		       return $(this).is(":visible");
+		},
+	});
+	
+	$("a[data-toggle=\"tab\"]").click(function(e) {
+	        e.preventDefault();
+	        $(this).tab("show");
+	});
+});
+	
+	
+/*When clicking on Full hide fail/success boxes */ 
+$('#name').focus(function() {
+	$('#success').html('');
 });
 </script>
 
